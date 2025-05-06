@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Your Website Name - Home</title>
+    <meta name="description" content="Brief description of your website's homepage content (approx. 155 chars).">
+    <link rel="canonical" href="https://www.yourdomain.com/"> <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.yourdomain.com/">
+    <meta property="og:title" content="Your Website Name - Home">
+    <meta property="og:description" content="Brief description of your website's homepage content.">
+    <meta property="og:image" content="https://www.yourdomain.com/images/og-image-home.jpg">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/images/icon.svg" type="image/svg+xml"> <link rel="apple-touch-icon" href="/images/apple-touch-icon.png"> <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles/styles.css">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "url": "https://www.yourdomain.com/",
+      "name": "Your Website Name",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.yourdomain.com/search?q={search_term_string}", // Update search URL structure
+        "query-input": "required name=search_term_string"
+      }
+      // Add Organization schema if applicable
+    }
+    </script>
+
+</head>
+<body>
+
+    <header class="site-header" id="site-header">
+        <div class="header-inner">
+            <div class="header-left">
+                 <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="main-navigation">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path></svg>
+                 </button>
+                 <nav class="main-nav" id="main-navigation" aria-label="Main Navigation">
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/category/tech/">Tech</a></li>
+                        <li><a href="/category/design/">Design</a></li>
+                        <li><a href="/about/">About</a></li>
+                        </ul>
+                </nav>
+                <button class="search-button" aria-label="Open Search">
+                   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg>
+                </button>
+                 </div>
+            <div class="site-logo">
+                <a href="/" aria-label="Homepage">
+                    <img src="/images/logo.svg" alt="Your Website Name Logo"> </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero container">
+            <h1>Welcome to Your Website</h1>
+            <p>Your tagline or a brief intro goes here.</p>
+            </section>
+
+        <section id="featured" class="featured-articles container">
+            <h2>Featured Articles</h2>
+            <div class="article-grid">
+                <article class="article-card">
+                    <h3><a href="/article/sample-article-slug/">Sample Article Title</a></h3>
+                    <p>A short excerpt or summary of the article content goes here...</p>
+                    <div class="article-meta">
+                        <span>By <a href="/author/john-doe/">John Doe</a></span> | <span>May 5, 2025</span>
+                    </div>
+                </article>
+                 <article class="article-card">
+                    <h3><a href="/article/another-post/">Another Interesting Post</a></h3>
+                    <p>More engaging content summary here to entice readers...</p>
+                     <div class="article-meta">
+                        <span>By <a href="/author/jane-smith/">Jane Smith</a></span> | <span>May 1, 2025</span>
+                    </div>
+                </article>
+                </div>
+        </section>
+
+        </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2025 Your Website Name. All Rights Reserved.</p>
+            <ul class="footer-links">
+                <li><a href="https://artxsc.org/mentions-legales.html">Terms of Service</a></li>
+                <li><a href="https://artxsc.org/en/#contacts">Contact</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="script/script.js" defer></script>
+    </body>
+</html>
