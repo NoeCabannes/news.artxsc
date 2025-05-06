@@ -1,0 +1,322 @@
+/* styles.css */
+
+/* 0. Base Reset & Box Sizing */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* 1. Variables & Root Settings */
+:root {
+    --brand-primary: #007bff; /* Example: Blue */
+    --brand-secondary: #6c757d; /* Example: Gray */
+    --text-color: #333;
+    --text-muted: #6c757d;
+    --background-color: #ffffff;
+    --header-height: 70px;
+    --header-height-sticky: 55px;
+    --font-stack: 'Poppins', sans-serif;
+    --content-max-width: 800px; /* Max width for readable article content */
+    --site-max-width: 1200px; /* Max width for overall site container */
+    --border-radius: 4px;
+    --transition-speed: 0.3s;
+}
+
+/* 2. Basic Typography & Body */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--header-height-sticky); /* Offset for sticky header links */
+}
+
+body {
+    font-family: var(--font-stack);
+    font-size: 16px; /* Base font size for mobile */
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Use rem units for scalable typography */
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 0.75em;
+    line-height: 1.3;
+    font-weight: 600; /* Poppins semi-bold */
+}
+
+h1 { font-size: 2.25rem; } /* ~36px */
+h2 { font-size: 1.75rem; } /* ~28px */
+h3 { font-size: 1.375rem; } /* ~22px */
+h4 { font-size: 1.125rem; } /* ~18px */
+
+p {
+    margin-bottom: 1em;
+}
+
+a {
+    color: var(--brand-primary);
+    text-decoration: none;
+    transition: color var(--transition-speed) ease;
+}
+
+a:hover,
+a:focus {
+    color: darkblue; /* Darken primary on hover */
+    text-decoration: underline;
+}
+
+img, svg {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Prevents bottom space */
+}
+
+/* 3. Layout Utilities */
+.container {
+    width: 90%;
+    max-width: var(--site-max-width);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.content-container {
+    width: 90%;
+    max-width: var(--content-max-width);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 4. Header */
+.site-header {
+    background-color: var(--background-color);
+    padding: 0 5%; /* Use percentage padding for responsiveness */
+    height: var(--header-height);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: height var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    border-bottom: 1px solid #eee; /* Subtle separator */
+}
+
+.site-header .header-inner {
+    display: flex;
+    justify-content: space-between; /* Push nav/search left, logo right */
+    align-items: center;
+    height: 100%;
+    max-width: var(--site-max-width);
+    margin: 0 auto;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+/* Basic Nav for Mobile - can be enhanced with JS toggle */
+.main-nav ul {
+    list-style: none;
+    display: flex; /* Hidden on mobile by default below */
+    gap: 15px;
+    margin-right: 20px; /* Space before search */
+}
+
+.main-nav a {
+    text-decoration: none;
+    font-weight: 500; /* Poppins medium */
+    color: var(--text-color);
+}
+.main-nav a:hover {
+    color: var(--brand-primary);
+    text-decoration: none;
+}
+
+.search-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.search-button svg {
+    width: 20px;
+    height: 20px;
+    fill: var(--text-color);
+    transition: fill var(--transition-speed) ease;
+}
+.search-button:hover svg {
+    fill: var(--brand-primary);
+}
+
+
+.site-logo img {
+    height: calc(var(--header-height) - 30px); /* Adjust padding */
+    width: auto;
+    transition: height var(--transition-speed) ease;
+    display: block;
+}
+
+/* Header Sticky State */
+.site-header.is-sticky {
+    height: var(--header-height-sticky);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.site-header.is-sticky .site-logo img {
+    height: calc(var(--header-height-sticky) - 20px); /* Adjust padding */
+}
+
+/* 5. Footer */
+.site-footer {
+    background-color: #f8f9fa; /* Light gray background */
+    padding: 2rem 0;
+    margin-top: 4rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    border-top: 1px solid #eee;
+}
+
+.site-footer p {
+    margin-bottom: 0.5em;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin-top: 1em;
+}
+
+.footer-links li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+/* 6. Buttons (Example) */
+.btn {
+    display: inline-block;
+    padding: 0.75em 1.5em;
+    background-color: var(--brand-primary);
+    color: #fff;
+    border: none;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color var(--transition-speed) ease;
+}
+
+.btn:hover {
+    background-color: darkblue; /* Darken primary */
+    color: #fff;
+    text-decoration: none;
+}
+
+/* 7. Basic Article Styling (Readability) */
+.article-content h2,
+.article-content h3,
+.article-content h4 {
+    margin-top: 1.8em; /* More space before headings */
+}
+
+.article-content p,
+.article-content ul,
+.article-content ol,
+.article-content blockquote {
+    margin-bottom: 1.2em;
+}
+
+.article-content ul,
+.article-content ol {
+    margin-left: 1.5em;
+}
+
+.article-content li {
+    margin-bottom: 0.5em;
+}
+
+.article-content blockquote {
+    border-left: 4px solid var(--brand-primary);
+    padding-left: 1em;
+    margin-left: 0;
+    font-style: italic;
+    color: var(--text-muted);
+}
+
+.article-content img {
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    border-radius: var(--border-radius);
+    /* Consider adding subtle shadow or border */
+}
+
+.article-content figure {
+    margin: 1.5em 0;
+}
+.article-content figcaption {
+    text-align: center;
+    font-size: 0.9em;
+    color: var(--text-muted);
+    margin-top: 0.5em;
+}
+
+/* 8. Responsive Adjustments (Mobile First Approach) */
+
+/* Hide desktop nav on mobile by default */
+.main-nav {
+    display: none; /* Start hidden */
+}
+/* Show a mobile menu toggle button (requires JS) */
+.mobile-menu-toggle {
+    display: block; /* Show toggle button */
+    background: none;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    margin-right: 15px; /* Space between toggle and search */
+}
+.mobile-menu-toggle svg { /* Basic hamburger icon */
+    width: 24px;
+    height: 24px;
+    fill: var(--text-color);
+}
+
+/* Styles for when mobile menu is active (toggled by JS) */
+/* Example: .main-nav.is-active { display: block; position: absolute; ... } */
+
+/* Tablet and up */
+@media (min-width: 768px) {
+    body {
+        font-size: 17px; /* Slightly larger base font */
+    }
+
+    .site-header {
+        padding: 0 2%; /* Adjust padding */
+    }
+
+    /* Show desktop nav, hide mobile toggle */
+    .main-nav {
+        display: block;
+    }
+    .mobile-menu-toggle {
+        display: none;
+    }
+    .header-inner {
+        max-width: var(--site-max-width);
+    }
+
+    h1 { font-size: 2.75rem; } /* ~44px */
+    h2 { font-size: 2rem; }    /* ~32px */
+    h3 { font-size: 1.5rem; }  /* ~24px */
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+    body {
+        font-size: 18px; /* Desktop base font */
+    }
+    h1 { font-size: 3rem; } /* ~48px */
+}
