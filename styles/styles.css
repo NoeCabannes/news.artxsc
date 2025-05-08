@@ -173,6 +173,9 @@ img, svg {
     outline: none; /* Remove default outline, rely on background/border */
 }
 
+.site-logo {
+    flex-shrink: 0;
+}
 
 .site-logo img {
     height: calc(var(--header-height) - 30px); /* Adjust padding */
