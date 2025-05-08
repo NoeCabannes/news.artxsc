@@ -90,26 +90,27 @@ img, svg {
     margin-right: auto;
 }
 
-/* 4. Header */
+/* 4. Header - Revisions */
 .site-header {
     background-color: var(--background-color);
-    padding: 0 5%; /* Use percentage padding for responsiveness */
+    /* Remove padding: 0 5%; as .container handles spacing */
     height: var(--header-height);
     position: sticky;
     top: 0;
     z-index: 1000;
     transition: height var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
-    border-bottom: 1px solid #eee; /* Subtle separator */
+    border-bottom: 1px solid #eee;
 }
 
 .site-header .header-inner {
+    /* Use container's max-width and padding */
     display: flex;
-    justify-content: space-between; /* Push nav/search left, logo right */
+    justify-content: space-between; /* Logo left, Search right */
     align-items: center;
     height: 100%;
-    max-width: var(--site-max-width);
-    margin: 0 auto;
+    /* Removed max-width and margin: 0 auto; (handled by .container) */
 }
+
 
 .header-left {
     display: flex;
@@ -136,19 +137,40 @@ img, svg {
 
 .search-button {
     background: none;
-    border: none;
+    border: 1px solid transparent; /* Add border for focus state */
+    border-radius: var(--border-radius);
     cursor: pointer;
-    padding: 5px;
+    padding: 0.4em 0.8em; /* Adjust padding */
+    display: flex;
+    align-items: center;
+    gap: 0.5em; /* Space between icon and text */
+    font-family: var(--font-stack);
+    font-size: 0.95rem; /* Adjust size */
+    font-weight: 500;
+    color: var(--text-color);
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, border-color var(--transition-speed) ease;
 }
 
 .search-button svg {
-    width: 20px;
-    height: 20px;
-    fill: var(--text-color);
-    transition: fill var(--transition-speed) ease;
+    width: 18px; /* Adjust icon size */
+    height: 18px;
+    fill: currentColor; /* Inherit color from button text */
 }
+
 .search-button:hover svg {
     fill: var(--brand-primary);
+}
+
+.search-button span {
+     line-height: 1; /* Align text better */
+}
+
+.search-button:hover,
+.search-button:focus {
+    color: var(--brand-primary);
+    background-color: #f8f9fa; /* Subtle background on hover/focus */
+    border-color: #ddd; /* Subtle border on hover/focus */
+    outline: none; /* Remove default outline, rely on background/border */
 }
 
 
@@ -157,6 +179,13 @@ img, svg {
     width: auto;
     transition: height var(--transition-speed) ease;
     display: block;
+    max-height: 100%;
+}
+
+/* Search Button Styling */
+.header-right {
+    display: flex;
+    align-items: center;
 }
 
 /* Header Sticky State */
@@ -319,4 +348,376 @@ img, svg {
         font-size: 18px; /* Desktop base font */
     }
     h1 { font-size: 3rem; } /* ~48px */
+}
+
+@media (max-width: 480px) {
+    .search-button span {
+        /* Optionally hide text on very small screens */
+        /* display: none; */
+    }
+    .search-button {
+        padding: 0.4em; /* Adjust padding if text is hidden */
+    }
+    .site-logo img {
+         height: calc(var(--header-height) - 35px); /* Maybe slightly smaller logo */
+    }
+     .site-header.is-sticky .site-logo img {
+         height: calc(var(--header-height-sticky) - 25px);
+     }
+}
+
+
+/* == Component Styling == */
+
+/* 8. Article Grid / List Styling */
+.article-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* 1 column mobile */
+    gap: 2rem; /* Spacing between cards */
+    margin-top: 2rem;
+}
+
+.article-list { /* For Author page or alternative listings */
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem; /* More vertical space for list items */
+    margin-top: 2rem;
+}
+
+/* Responsive Grid Columns */
+@media (min-width: 600px) { /* Small tablets */
+    .article-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns */
+        gap: 1.5rem;
+    }
+}
+@media (min-width: 900px) { /* Larger tablets / Desktops */
+    .article-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 columns */
+        gap: 2rem;
+    }
+}
+
+
+/* 9. Article Card (Homepage Grid) & Summary (Author List) Styling */
+.article-card, .article-summary {
+    background-color: #fff; /* Ensure background for potential shadow */
+    /* Remove border if going super minimal, or keep very light */
+    /* border: 1px solid #eee; */
+    border-radius: var(--border-radius);
+    overflow: hidden; /* Contain elements like images */
+    transition: box-shadow var(--transition-speed) ease, transform var(--transition-speed) ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.article-card:hover, .article-summary:hover {
+    /* Subtle lift effect on hover */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transform: translateY(-3px);
+}
+
+/* Card/Summary Image (Optional) */
+.article-card img, .article-summary img { /* Style if you add images to summaries */
+    aspect-ratio: 16 / 9; /* Example aspect ratio */
+    object-fit: cover; /* Ensure image covers area nicely */
+    width: 100%;
+    border-bottom: 1px solid #eee; /* Separator if image is present */
+}
+
+/* Card/Summary Content Area */
+.article-card .article-content-wrapper, /* Add this wrapper div in HTML */
+.article-summary .article-content-wrapper {
+    padding: 1rem 1.25rem; /* Inner padding */
+    flex-grow: 1; /* Allow wrapper to grow */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Example HTML structure inside card/summary:
+<article class="article-card"> or <article class="article-summary">
+    <a href="..." aria-label="Read more about [Article Title]"> <img ... /> </a> // Link wraps image
+    <div class="article-content-wrapper">
+        <h3><a href="...">[Article Title]</a></h3> // Link only wraps title
+        <p>Excerpt...</p>
+        <div class="article-meta">...</div>
+    </div>
+</article>
+*/
+
+
+.article-card h3, .article-summary h3 {
+    font-size: 1.2rem; /* Adjust as needed */
+    margin-bottom: 0.5em;
+    line-height: 1.4;
+}
+.article-card h3 a, .article-summary h3 a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+.article-card h3 a:hover, .article-summary h3 a:hover {
+    color: var(--brand-primary);
+    text-decoration: underline;
+}
+
+.article-card p, .article-summary p { /* Excerpt styling */
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-bottom: 1em;
+    flex-grow: 1; /* Push meta to bottom if using flex */
+}
+
+.article-card .article-meta, .article-summary .article-meta {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: auto; /* Push to bottom */
+    padding-top: 0.5em; /* Space above meta */
+}
+.article-card .article-meta a, .article-summary .article-meta a {
+    color: var(--text-muted);
+    text-decoration: underline;
+}
+.article-card .article-meta a:hover, .article-summary .article-meta a:hover {
+    color: var(--brand-primary);
+}
+
+
+/* 10. Author Page Styling */
+.author-header {
+    text-align: center; /* Center avatar, name, bio */
+    margin: 2rem auto 3rem auto;
+    max-width: 700px; /* Constrain width */
+}
+
+.author-avatar { /* Style the optional <img> tag */
+    width: 120px;
+    height: 120px;
+    border-radius: 50%; /* Circular avatar */
+    margin: 0 auto 1rem auto; /* Center horizontally */
+    object-fit: cover;
+    display: block;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.author-header h1 {
+    margin-bottom: 0.5em;
+    font-size: 2.5rem; /* Adjust size */
+}
+
+.author-bio p {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+.author-articles h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5em;
+}
+
+/* 11. Article Page - Specific Styles */
+
+/* Breadcrumbs */
+.breadcrumbs {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+}
+.breadcrumbs ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.breadcrumbs li {
+    display: inline-block;
+    margin: 0;
+}
+.breadcrumbs li:not(:last-child)::after {
+    content: '/'; /* Separator */
+    margin: 0 0.5em;
+    color: #ccc;
+}
+.breadcrumbs a {
+    color: var(--text-muted);
+    text-decoration: none;
+}
+.breadcrumbs a:hover {
+    color: var(--brand-primary);
+    text-decoration: underline;
+}
+.breadcrumbs [aria-current="page"] {
+    font-weight: 500; /* Slightly bolder current page */
+    color: var(--text-color);
+}
+
+
+/* Article Header Meta */
+.article-header {
+    margin-bottom: 2rem;
+}
+.article-header .article-meta {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-top: 0.5rem; /* Space below H1 */
+    margin-bottom: 1.5rem; /* Space above featured image or content */
+}
+.article-header .article-meta a[rel="author"] {
+    font-weight: 500;
+    color: var(--text-color);
+    text-decoration: none;
+}
+.article-header .article-meta a[rel="author"]:hover {
+    color: var(--brand-primary);
+    text-decoration: underline;
+}
+.article-header .article-meta time {
+    margin-left: 0.25em;
+}
+
+/* Featured Image */
+.featured-image {
+    margin: 0 0 2.5rem 0; /* Remove default figure margin */
+}
+.featured-image img {
+    border-radius: var(--border-radius); /* Consistent rounding */
+    /* Ensure width/height in HTML prevent CLS */
+}
+.featured-image figcaption { /* Reuse from base styles */
+     margin-top: 0.75em;
+}
+
+/* Article Content - Refinements (already have base styles) */
+.article-content {
+    /* Adjust line-height maybe? Base is 1.6, could go to 1.7 */
+    /* line-height: 1.7; */
+}
+.article-content pre { /* Code blocks */
+    background-color: #f8f9fa; /* Light background */
+    border: 1px solid #eee;
+    border-radius: var(--border-radius);
+    padding: 1em;
+    overflow-x: auto; /* Allow horizontal scroll */
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 1.5em 0;
+}
+.article-content code { /* Inline code */
+     background-color: #f8f9fa;
+     padding: 0.2em 0.4em;
+     border-radius: 3px;
+     font-size: 0.9em;
+}
+.article-content pre code { /* Reset for code inside pre */
+     background-color: transparent;
+     padding: 0;
+     border-radius: 0;
+     font-size: inherit;
+}
+
+/* Article Footer (Tags) */
+.article-footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #eee;
+}
+.tags strong {
+    margin-right: 0.5em;
+    font-weight: 600;
+}
+.tags a {
+    display: inline-block;
+    background-color: #e9ecef; /* Light gray background */
+    color: var(--text-muted);
+    padding: 0.25em 0.75em;
+    border-radius: var(--border-radius);
+    font-size: 0.85rem;
+    margin-right: 0.5em;
+    margin-bottom: 0.5em; /* Allow wrapping */
+    text-decoration: none;
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+}
+.tags a:hover {
+    background-color: var(--brand-primary);
+    color: #fff;
+}
+
+/* Author Box */
+.author-box {
+    margin-top: 3rem;
+    padding: 1.5rem;
+    background-color: #f8f9fa; /* Light background */
+    border-radius: var(--border-radius);
+    display: flex;
+    flex-direction: column; /* Stack elements */
+    align-items: center; /* Center align content */
+    text-align: center;
+}
+
+.author-box img { /* Style optional avatar if used */
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    object-fit: cover;
+}
+
+.author-box h4 {
+    margin-bottom: 0.5em;
+    font-size: 1.2rem;
+}
+.author-box h4 a { /* Link author name */
+    color: var(--text-color);
+    text-decoration: none;
+}
+.author-box h4 a:hover {
+    color: var(--brand-primary);
+    text-decoration: underline;
+}
+
+.author-box p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-bottom: 0; /* Remove default p margin */
+}
+.author-box p a:last-of-type { /* Link to more articles */
+    font-weight: 500;
+    color: var(--brand-primary);
+    text-decoration: none;
+    display: inline-block; /* Make it easier to tap */
+    margin-left: 0.25em;
+}
+.author-box p a:last-of-type:hover {
+    text-decoration: underline;
+}
+
+
+/* Related Articles */
+.related-articles {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #eee;
+}
+.related-articles h2 {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+.related-articles ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem; /* Space between links */
+}
+.related-articles li a {
+    text-decoration: none;
+    font-weight: 500;
+}
+.related-articles li a:hover {
+    color: var(--brand-primary);
+    text-decoration: underline;
 }
