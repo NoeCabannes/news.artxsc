@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const header = document.querySelector('.site-header');
     // Optional: Define a threshold slightly below the top to trigger sticky
-    const stickyThreshold = 50; // pixels
+    const stickyThreshold = 1; // pixels
 
     if (header) {
         const handleScroll = () => {
