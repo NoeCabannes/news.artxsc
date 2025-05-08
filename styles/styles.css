@@ -16,7 +16,7 @@
     --text-color: #333;
     --text-muted: #6c757d;
     --background-color: #ffffff;
-    --header-height: 170px;
+    --header-height: 100px;
     --header-height-sticky: 55px;
     --font-stack: 'Poppins', sans-serif;
     --content-max-width: 800px; /* Max width for readable article content */
