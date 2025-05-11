@@ -763,8 +763,13 @@ img, svg {
     max-width: 600px; /* Optional: to control the line length of the paragraph */
 }
 
-/* If you want the whole section to be clickable */
-/*
+.hero-thumbnail-link {
+    display: block; /* Makes the anchor take up the full width and behave like a block element */
+    text-decoration: none; /* Removes the default underline from the link */
+    color: inherit; /* Ensures the text inside (which is white) doesn't turn blue (default link color) */
+}
+
+
 .hero-link-overlay {
     position: absolute;
     top: 0;
@@ -778,7 +783,7 @@ img, svg {
     position: relative;
     z-index: 2;
 }
-*/
+
 
 /* --- Responsive Adjustments --- */
 
@@ -822,4 +827,5 @@ img, svg {
         padding: 30px 10px;
     }
 }
+
 
