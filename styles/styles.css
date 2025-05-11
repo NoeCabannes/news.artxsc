@@ -183,6 +183,7 @@ img, svg {
     transition: height var(--transition-speed) ease;
     display: block;
     max-height: 100%;
+    max-width: 70vw;
 }
 
 /* Search Button Styling */
