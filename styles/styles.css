@@ -726,7 +726,7 @@ img, svg {
 }
 
 .hero-thumbnail {
-    background-image: url('your-background-image.jpg'); /* ** IMPORTANT: Replace with your actual image path ** */
+    background-image: url('https://news.artxsc.org/images/thumbnail-background.jpg'); /* ** IMPORTANT: Replace with your actual image path ** */
     background-size: cover;
     background-position: center;
     padding: 60px 20px; /* Adjust padding as needed */
