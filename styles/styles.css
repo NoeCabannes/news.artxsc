@@ -815,6 +815,9 @@ img, svg {
     .hero-thumbnail {
         padding: 40px 15px;
     }
+    .search-button {
+        display:none;
+    }
 }
 
 /* For mobile phones */
