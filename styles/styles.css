@@ -739,8 +739,10 @@ img, svg {
     max-width: 800px; /* Adjust max-width as needed */
     margin: 0 auto; /* Centers the content if you want a max-width */
     /* If you want it aligned to the left like the image, use: */
-    /* margin: 0; */
-    /* padding-left: 5%; */ /* Example padding */
+    margin: 0;
+    padding-left: 5%;
+    position: relative; /* To enable z-index */
+    z-index: 2;       /* Places it above the ::before pseudo-element */
 }
 
 .hero-content h1 {
