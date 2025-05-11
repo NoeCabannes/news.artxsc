@@ -724,3 +724,102 @@ img, svg {
     color: var(--brand-primary);
     text-decoration: underline;
 }
+
+.hero-thumbnail {
+    background-image: url('your-background-image.jpg'); /* ** IMPORTANT: Replace with your actual image path ** */
+    background-size: cover;
+    background-position: center;
+    padding: 60px 20px; /* Adjust padding as needed */
+    color: white;
+    text-align: left;
+    position: relative; /* For potential overlay link */
+}
+
+.hero-content {
+    max-width: 800px; /* Adjust max-width as needed */
+    margin: 0 auto; /* Centers the content if you want a max-width */
+    /* If you want it aligned to the left like the image, use: */
+    /* margin: 0; */
+    /* padding-left: 5%; */ /* Example padding */
+}
+
+.hero-content h1 {
+    font-size: 2.5rem; /* Adjust font size as needed */
+    margin-top: 0;
+    margin-bottom: 15px;
+    display: flex; /* To align text and icon */
+    align-items: center; /* To vertically align text and icon */
+}
+
+.hero-content .external-link-icon {
+    width: 1em; /* Scale icon with font size */
+    height: 1em; /* Scale icon with font size */
+    margin-left: 10px;
+}
+
+.hero-content p {
+    font-size: 1.1rem; /* Adjust font size as needed */
+    margin-bottom: 0;
+    max-width: 600px; /* Optional: to control the line length of the paragraph */
+}
+
+/* If you want the whole section to be clickable */
+/*
+.hero-link-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+*/
+
+/* --- Responsive Adjustments --- */
+
+/* For tablets and smaller desktops */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .hero-thumbnail {
+        padding: 40px 15px;
+    }
+}
+
+/* For mobile phones */
+@media (max-width: 480px) {
+    .hero-content {
+        text-align: left; /* Ensures text stays left-aligned on mobile */
+    }
+
+    .hero-content h1 {
+        font-size: 1.8rem;
+        flex-direction: column; /* Stack icon below text if needed, or keep row */
+        align-items: flex-start; /* Align to start if stacking */
+    }
+
+    .hero-content .external-link-icon {
+        margin-left: 0; /* Adjust if stacking */
+        margin-top: 5px;  /* Add some space if stacking */
+    }
+
+    .hero-content p {
+        font-size: 0.9rem;
+    }
+
+    .hero-thumbnail {
+        padding: 30px 10px;
+    }
+}
+
