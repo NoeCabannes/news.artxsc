@@ -842,7 +842,7 @@ img, svg {
     }
 }
 
-.language-switcher strong[aria-current="page"] {
+.language-switcher a[aria-current="page"] {
     text-decoration: none;
     /* Add other styling to indicate it's active and not clickable */
     color: black; /* Or your site's text color */
