@@ -38,26 +38,3 @@ document.addEventListener('DOMContentLoaded', () => {
     //end
 
 });
-
-// Wait for the HTML document to be fully loaded before running the script
-document.addEventListener('DOMContentLoaded', function() {
-    // Get the select element by its ID
-    const languageSelect = document.getElementById('language-select');
-
-    // Check if the element exists to prevent errors
-    if (languageSelect) {
-        // Add an event listener that triggers when the selected option changes
-        languageSelect.addEventListener('change', function() {
-            // Get the value of the selected option (this is the URL)
-            const selectedUrl = this.value;
-
-            // Check if the selectedUrl is not empty (i.e., the placeholder wasn't selected)
-            if (selectedUrl) {
-                // Redirect the browser to the new URL
-                window.location.href = selectedUrl;
-            }
-        });
-    } else {
-        console.error("Error: The select element with ID 'language-select' was not found.");
-    }
-});
